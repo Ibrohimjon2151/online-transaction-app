@@ -11,8 +11,12 @@ public sealed interface WalletControllerInt permits WalletController {
 
  ResponseEntity<?> createWallet(@RequestBody WalletDto walletDto);
 
-
-
  ResponseEntity<?> updateWallet(@PathVariable Long id, @RequestBody WalletDto walletDto);
+
+ ResponseEntity<?> getUsersAllWallets();
+
+ ResponseEntity<?> getSingleWallet(@PathVariable Long id);
+
+
 
 }

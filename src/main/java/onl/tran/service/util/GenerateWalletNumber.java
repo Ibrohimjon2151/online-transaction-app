@@ -33,7 +33,7 @@ public class GenerateWalletNumber {
 
   do {
    randomNumber = generateRandom16DigitNumber();
-  } while (walletRepository.existsByWalletNumber(randomNumber));
+  } while (walletRepository.existsByWalletNumber(Long.parseLong(randomNumber)));
 
   return randomNumber;
  }

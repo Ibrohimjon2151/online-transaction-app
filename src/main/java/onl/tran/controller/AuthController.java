@@ -1,16 +1,14 @@
 package onl.tran.controller;
 
 import lombok.RequiredArgsConstructor;
+import onl.tran.exceptions.WrongNumber;
 import onl.tran.payload.ApiResponse;
-import onl.tran.payload.AuthenticationDto;
-import onl.tran.payload.LoginDto;
+import onl.tran.payload.request.AuthenticationDto;
+import onl.tran.payload.request.LoginDto;
 import onl.tran.payload.SmsPhoneNumberDto;
 import onl.tran.service.UserService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/auth")
@@ -32,12 +30,12 @@ public final class AuthController implements AuthControllerInt {
 
 
  /**
-  * CHECK ENTERED SMS CODE
+  * VERIFY ENTERED SMS CODE
   */
- @PostMapping("/sms")
+ @PostMapping("/verify")
  @Override
- public ResponseEntity<ApiResponse> checkSmsCode(@RequestBody SmsPhoneNumberDto smsDto) {
-  ApiResponse response = userService.checkSmsCodeEnableUser(smsDto);
+ public ResponseEntity<ApiResponse> verifySmsCode(@RequestBody SmsPhoneNumberDto smsDto) {
+  ApiResponse response = userService.verifySmsCodeEnableUser(smsDto);
   return ResponseEntity.status(response.isSuccess() ? 200 : 403).body(response);
  }
 
@@ -46,9 +44,22 @@ public final class AuthController implements AuthControllerInt {
   * LOGIN
   */
  @Override
- @PostMapping
+ @PostMapping("/login")
  public ResponseEntity<ApiResponse> login(@RequestBody LoginDto loginDto) {
   ApiResponse response = userService.login(loginDto);
   return ResponseEntity.status(response.isSuccess() ? 200 : 409).body(response);
  }
+
+
+ /**
+  * METHOD TO RESET PASSWORD AND SEND AGAIN SMS CODE AFTER TWO MINUTE
+  */
+ @Override
+ @PostMapping("resetPassword")
+ public ResponseEntity<ApiResponse> resetPassword(@RequestParam String phoneNumber) throws WrongNumber {
+  ApiResponse response = userService.sendSmsCodeVerifyPhone(phoneNumber);
+  return ResponseEntity.status(response.isSuccess() ? 200 : 409).body(response);
+ }
+
+
 }

@@ -36,8 +36,25 @@ public final class WalletController implements WalletControllerInt {
  }
 
 
+ /**
+  * GET ALL USERS' ACTIVE WALLETS
+  */
+ @GetMapping("/all-active")
+ @Override
+ public ResponseEntity<?> getUsersAllWallets() {
+  ApiResponse response =  walletService.getAllActiveWallets();
+  return ResponseEntity.status(response.isSuccess() ? 200 : 400).body(response.getData());
+ }
 
 
-
+ /**
+  * GET USER'S SINGLE WALLET
+  */
+ @GetMapping("/get-single/{id}")
+ @Override
+ public ResponseEntity<?> getSingleWallet(@PathVariable Long id) {
+  ApiResponse response =  walletService.getSingleWallet(id);
+  return ResponseEntity.status(response.isSuccess() ? 200 : 400).body(response.getData());
+ }
 
 }

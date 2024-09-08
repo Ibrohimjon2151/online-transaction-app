@@ -12,6 +12,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -40,6 +41,8 @@ public class User extends AbstractEntity implements UserDetails {
  Role role;
 
  private boolean enabled = false;
+
+ private Date expirationTime;
 
  @Override
  public Collection<? extends GrantedAuthority> getAuthorities() {

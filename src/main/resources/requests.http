@@ -1,0 +1,72 @@
+###
+POST http://localhost:8888/api/auth/register
+Content-Type: application/json
+
+{
+  "phoneNumber": "998911082151",
+  "password": "1234512",
+  "firstName": "Ibo",
+  "lastName": "Yursunov"
+}
+
+<> 2024-09-08T131927.409.json
+<> 2024-09-08T131837.200.json
+<> 2024-09-08T122941.200.json
+<> 2024-09-08T011226.200.json
+<> 2024-09-08T011102.200.json
+<> 2024-09-08T004338.200.json
+<> 2024-09-08T004227.409.json
+<> 2024-09-08T003711.409.json
+<> 2024-09-08T002824.409.json
+<> 2024-09-08T002642.409.json
+<> 2024-09-08T002018.409.json
+<> 2024-09-08T001529.409.json
+<> 2024-09-08T001335.409.json
+
+###
+POST http://localhost:8888/api/auth/verify
+Content-Type: application/json
+
+{
+  "phoneNumber": "998911082151",
+  "message": "197159"
+}
+
+<> 2024-09-08T132827.200.json
+<> 2024-09-08T132744.403.json
+<> 2024-09-08T132104.403.json
+<> 2024-09-08T122955.200.json
+<> 2024-09-08T011256.403.json
+<> 2024-09-08T011249.200.json
+<> 2024-09-08T011134.200.json
+
+###
+POST http://localhost:8888/api/auth
+Content-Type: application/json
+
+{
+  "phoneNumber": "998911082151",
+  "password": "483293"
+}
+
+<> 2024-09-08T123119.200.json
+<> 2024-09-08T011430.200.json
+<> 2024-09-08T011415.200.json
+
+###
+POST http://localhost:8888/api/user/changePassword
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5OTg5MTEwODIxNTEiLCJpYXQiOjE3MjU3ODA1OTUsImV4cCI6NDk3MDI0ODExMzgwNzM2MH0.WQpdeGPmi5PZf4bW-Gllf1B7vz8Zgd0XSbI8rTwbLrk
+Content-Type: application/json
+
+{
+  "phoneNumber": "998911082151",
+  "password": "12345678"
+}
+
+<> 2024-09-08T123058.200.json
+
+###
+POST http://localhost:8888/api/auth/resetPassword?phoneNumber=998911082151
+Content-Type: application/x-www-form-urlencoded
+
+###

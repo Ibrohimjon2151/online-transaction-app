@@ -1,24 +1,25 @@
 package onl.tran.payload;
 
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationDto {
+public class TransactionDto {
 
  @NotNull
- private String phoneNumber;
+ private Long sourceWalletNumber;
 
  @NotNull
- private String password;
+ private Long destinationWalletNumber;
 
  @NotNull
- private String firstName;
-
- private String lastName;
+ private double amount;
 
 }

@@ -1,4 +1,4 @@
-package onl.tran.payload;
+package onl.tran.payload.request;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

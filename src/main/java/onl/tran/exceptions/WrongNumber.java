@@ -1,6 +1,7 @@
 package onl.tran.exceptions;
 
 import onl.tran.constants.AlertMessages;
+import onl.tran.constants.ErrorMessages;
 
 import java.io.IOException;
 
@@ -12,7 +13,7 @@ public class WrongNumber extends IOException {
   */
  @Override
  public String getMessage() {
-  return AlertMessages.CANNOT_SEND_MESSAGE;
+  return ErrorMessages.CANNOT_SEND_MESSAGE;
  }
 
 
