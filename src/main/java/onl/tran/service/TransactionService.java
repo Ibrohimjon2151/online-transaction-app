@@ -90,6 +90,7 @@ public class TransactionService {
   return smsService.sendMessage(smsDto);
  }
 
+ @Transactional
  public ApiResponse confirmTransaction(ConfirmTransactionDto confirmTransactionDto) {
   Optional<Transaction> optionalTransaction = transactionRepository.findByIdAndTransactor_Id(confirmTransactionDto.getTransactionId(), CurrentUserDetails.getCurrentUserId());
   if (optionalTransaction.isEmpty()) {

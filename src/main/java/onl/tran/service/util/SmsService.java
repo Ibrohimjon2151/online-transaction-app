@@ -44,7 +44,7 @@ public class SmsService {
   OkHttpClient client = new OkHttpClient().newBuilder()
    .build();
   MediaType mediaType = MediaType.parse("application/json");
-  RequestBody body = RequestBody.create(mediaType, String.valueOf(messageRequest));//IT HAS TO BE CHANGED WITH MESSAGE TO WORK CORRECTLY
+  RequestBody body = RequestBody.create(mediaType, String.valueOf(message));//IT HAS TO BE CHANGED WITH MESSAGE TO WORK CORRECTLY
 
 
   Request request = new Request.Builder()
@@ -55,9 +55,9 @@ public class SmsService {
    .addHeader("Accept", "application/json")
    .build();
   try (Response response = client.newCall(request).execute()) {
-//   if (!response.isSuccessful()) {
-//    throw new WrongNumber();
-//   }
+   if (!response.isSuccessful()) {
+    throw new WrongNumber();
+   }
    return new ApiResponse(AlertMessages.SUCCESSFULLY_SENT_SMS, true, response);
   } catch (IOException e) {
    throw new WrongNumber();
