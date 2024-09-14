@@ -37,7 +37,6 @@ public class SmsService {
   MessageRequest messageRequest = getMessageRequest(SmsPhoneNumberDto);
   Gson gson = new Gson();
   String message = gson.toJson(messageRequest);
-  System.out.println(message);
   /**
    * SEND REQUEST TO SEND EXACT PHONE NUMBER
    */

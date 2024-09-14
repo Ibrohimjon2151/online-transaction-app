@@ -1,5 +1,6 @@
 package onl.tran.controller;
 
+import jakarta.servlet.http.HttpServletResponse;
 import onl.tran.exceptions.WrongNumber;
 import onl.tran.payload.ApiResponse;
 import onl.tran.payload.request.AuthenticationDto;
@@ -13,7 +14,7 @@ public sealed interface AuthControllerInt permits AuthController{
 
  ResponseEntity<ApiResponse> register(@RequestBody AuthenticationDto authenticationDto);
 
- ResponseEntity<ApiResponse> verifySmsCode(@RequestBody SmsPhoneNumberDto smsDto);
+ ResponseEntity<ApiResponse> verifySmsCode(@RequestBody SmsPhoneNumberDto smsDto, HttpServletResponse httpServletResponse);
 
  ResponseEntity<ApiResponse> login(@RequestBody LoginDto loginDto);
 

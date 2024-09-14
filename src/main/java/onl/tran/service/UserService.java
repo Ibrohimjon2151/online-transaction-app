@@ -1,5 +1,7 @@
 package onl.tran.service;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import onl.tran.config.util.token.JwtService;
 import onl.tran.constants.AlertMessages;
@@ -71,7 +73,7 @@ public class UserService {
   }
  }
 
- public ApiResponse verifySmsCodeEnableUser(SmsPhoneNumberDto smsDto) {
+ public ApiResponse verifySmsCodeEnableUser(SmsPhoneNumberDto smsDto, HttpServletResponse response) {
   Optional<User> optionalUser = userRepository.findByPhoneNumber(smsDto.getPhoneNumber());
   if (optionalUser.isEmpty()) {
    return new ApiResponse(AlertMessages.USER_NOT_FOUND, false, null);
@@ -88,6 +90,15 @@ public class UserService {
     user.setEnabled(true);
     userRepository.save(user);
     var jwtToken = jwtService.generateToken(user);
+
+    Cookie jwtCookie = new Cookie("jwt", jwtToken);
+    jwtCookie.setHttpOnly(true); // Prevents JavaScript access
+    jwtCookie.setSecure(true);   // If using HTTPS
+    jwtCookie.setPath("/");      // Cookie available for all paths
+    jwtCookie.setMaxAge(24 * 60 * 120);
+
+    response.addCookie(jwtCookie);
+
     return new ApiResponse(AlertMessages.SUCCESSFULLY_ENTERED, true, jwtToken);
    }
   }
