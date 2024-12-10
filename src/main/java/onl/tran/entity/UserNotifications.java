@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class UsersNotifications extends AbstractEntity {
+public class UserNotifications extends AbstractEntity {
 
   private boolean read;
 

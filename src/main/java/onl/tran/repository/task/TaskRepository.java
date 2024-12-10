@@ -1,4 +1,4 @@
-package onl.tran.repository;
+package onl.tran.repository.task;
 
 import onl.tran.entity.task.Task;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -23,8 +23,4 @@ public class Notification extends AbstractEntity {
 
   private Object content;
 
-  @OneToMany
-  private List<UsersNotifications> recipients;
-
-
 }

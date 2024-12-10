@@ -1,4 +1,4 @@
-package onl.tran.service.util.quarts;
+package onl.tran.service.util.quartz;
 
 import lombok.RequiredArgsConstructor;
 import onl.tran.entity.task.TaskRecord;

@@ -3,8 +3,8 @@ package onl.tran.service.task;
 import onl.tran.entity.task.Task;
 import onl.tran.entity.task.TaskRecord;
 import onl.tran.exceptions.ExceptionInRunningJob;
-import onl.tran.repository.TaskRecordRepository;
-import onl.tran.service.util.quarts.QuartzService;
+import onl.tran.repository.task.TaskRecordRepository;
+import onl.tran.service.util.quartz.QuartzService;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,7 +24,9 @@ public class TaskRecordService {
     record.setTask(newTask);
     record.setDeadline(newTask.getDeadline());
     taskRecordRepository.save(record);
-    
+
+
+    // SAVE JOBS
     quartzService.createTaskJob(record);
 
   }

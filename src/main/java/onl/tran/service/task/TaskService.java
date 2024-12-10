@@ -5,7 +5,8 @@ import onl.tran.entity.task.Task;
 import onl.tran.exceptions.ExceptionInRunningJob;
 import onl.tran.payload.ApiResponse;
 import onl.tran.payload.TaskDto;
-import onl.tran.repository.TaskRepository;
+import onl.tran.repository.task.TaskRepository;
+import onl.tran.service.util.CurrentUserDetails;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,8 +25,11 @@ public class TaskService {
     newTask.setTitle(task.title());
     newTask.setDeadline(task.deadLine());
     newTask.setDescription(task.description());
+    newTask.setOwner(CurrentUserDetails.getCurrentUser());
     taskRepository.save(newTask);
 
+
+    // CREATE RECORD FOR TASK
     taskRecordService.addRecord(newTask);
     
 
