@@ -1,5 +1,6 @@
 package onl.tran.TEST;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import onl.tran.TEST.model.User;
 import onl.tran.exceptions.WrongNumber;
@@ -16,13 +17,11 @@ import java.time.LocalDate;
 @RequestMapping("api/auth")
 public class TestController {
 
+  @Getter
   static User [] users = new User[3];
   static {
-
     users[1] = new User("Ali", LocalDate.now().minusYears(15));
     users[2] = new User("Alijon", LocalDate.now().minusYears(65));
-    users[3] = new User("Alimuhammad", LocalDate.now().minusYears(36));
-
   }
 
 

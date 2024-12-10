@@ -24,7 +24,7 @@ public class SecurityConfig {
     http
       .csrf().disable()
       .authorizeRequests()
-      .requestMatchers("/api/auth/**",
+      .requestMatchers("/api/**",
         "/v2/api-docs",
         "/v3/api-docs",
         "/v3/api-docs/**",
